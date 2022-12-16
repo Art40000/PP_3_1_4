@@ -20,16 +20,15 @@ public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
-    private org.springframework.security.crypto.password.PasswordEncoder PasswordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public PasswordEncoder getPasswordEncoder() {
-        return PasswordEncoder;
+        return passwordEncoder;
     }
     @Override
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.PasswordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Autowired

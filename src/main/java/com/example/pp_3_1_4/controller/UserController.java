@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +43,8 @@ public class UserController {
     @GetMapping("/admin")
     public String findAll(Model model, Principal principal, User user, @AuthenticationPrincipal(expression = "username") String username) {
         Long id = userService.findUserByEmail(username).getId();
+        User currUser = userService.findById(id).get();
+        model.addAttribute("currUser", currUser);
         model.addAttribute("ID", id);
         model.addAttribute("principal", principal);
         List<User> users = userService.findAll();
