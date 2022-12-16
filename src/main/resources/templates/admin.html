@@ -93,7 +93,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="container">
-                                                                    <form action="#" th:action="@{/admin/user-update}" th:object="${user}" method="post">
+                                                                    <form action="#" th:action="@{/admin/user-update}" th:object="${user}" th:method="put">
                                                                         <div class="text-center">
                                                                             <strong>ID</strong>
                                                                             <input readonly type="number"  th:value="*{id}" th:id="id" id="id" name="id"  class="form-control">
@@ -138,7 +138,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="container">
-                                                                <form action="#" th:object="${user}" th:action="@{admin/user-delete/{id}(id=${user.id})}"  method="get">
+                                                                <form action="#" th:object="${user}" th:action="@{admin/user-delete/{id}(id=${user.id})}"  th:method="delete">
                                                                     <div class="text-center">
                                                                         <strong>ID</strong>
                                                                         <input readonly type="number"  th:value="*{id}" class="form-control" disabled>

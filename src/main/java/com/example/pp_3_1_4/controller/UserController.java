@@ -63,13 +63,13 @@ public class UserController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/user-delete/{id}")
+    @DeleteMapping("/admin/user-delete/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         userService.deleteById(id);
         return "redirect:/admin";
     }
 
-    @PostMapping("admin/user-update")
+    @PutMapping("admin/user-update")
     public String updateUser(User user){
         if(user.getRoles().size() == 0) {
             user.setRoles(Set.of(userService.getRoleRepository().findRoleByName("USER")));
